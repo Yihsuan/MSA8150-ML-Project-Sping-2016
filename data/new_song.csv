@@ -1,0 +1,4 @@
+"artist","title","key","artist_familiarity","energy","liveness","tempo","artist_hottness","speechiness","acousticness","instrumentalness","danceability","time_signature","loudness","duration","mode","peak","weeks","country","dance","hip_hop","pop","r&b","rock","alternative","billboard"
+"Rihanna","Work",11,0.002,0.921683,0.129319,99.951,0.001,0.121585,0.165079,0,0.599319,4,-2.674,222.61288,1,1,13,0,1,0,1,1,0,0,1
+"Desiigner","Panda",10,0.118196,0.639256,0.37019,145.276,0.009453,0.360984,0.150097,0,0.802083,4,-7.905,246.59592,0,1,9,0,0,0,0,0,0,0,1
+"Tori Kelly","Hollow",2,0.070252,0.654112,0.436689,126.03,0.049194,0.036878,0.020079,0.001559,0.61415,4,-6.813,210.60649,0,68,10,0,0,0,1,1,0,0,1

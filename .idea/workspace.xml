@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd786829-390c-4d55-9fc2-0e10daec462b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SongsCollection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CollectBillboardSongs.py" afterPath="$PROJECT_DIR$/CollectBillboardSongs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CollectRandomSongs.py" afterPath="$PROJECT_DIR$/CollectRandomSongs.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CollectBillboardSongs.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CollectRandomSongs.py" afterPath="" />
     </list>
     <ignored path="MSA8150-ML-Project-Sping-2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,30 +25,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CollectRandomSongs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CollectRandomSongs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="180" column="67" selection-start-line="83" selection-start-column="0" selection-end-line="180" selection-end-column="67" />
-              <folding>
-                <element signature="e#54#85#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CollectBillboardSongs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CollectBillboardSongs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="120" column="31" selection-start-line="29" selection-start-column="0" selection-end-line="120" selection-end-column="31" />
-              <folding>
-                <element signature="e#53#84#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SongsCollection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SongsCollection.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -409,9 +383,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -443,9 +417,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="26" column="31" selection-start-line="19" selection-start-column="0" selection-end-line="26" selection-end-column="31" />
-          <folding>
-            <element signature="e#54#85#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -453,9 +425,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#53#84#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -487,9 +457,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
           <caret line="180" column="67" selection-start-line="83" selection-start-column="0" selection-end-line="180" selection-end-column="67" />
-          <folding>
-            <element signature="e#54#85#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -497,9 +465,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="553">
           <caret line="120" column="31" selection-start-line="29" selection-start-column="0" selection-end-line="120" selection-end-column="31" />
-          <folding>
-            <element signature="e#53#84#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>

@@ -63,6 +63,7 @@ def create_artist_list(n=10000):
             hrs, mins, secs = calculate_elapsed_time(begin_t)
 
             with open('create_artist_list.log', 'a') as f:
+                f.write('\nStatus:')
                 f.write('\nElapsed time: ' + str(hrs) + ':' + str(mins) + ':' + str(secs))
                 f.write('\n# of searched artists: ' + str(len(searched)))
                 f.write('\n# of artist in the list: ' + str(len(artist_list)))
@@ -155,6 +156,7 @@ def create_song_list():
                 f.write('\nElapsed time: ' + str(hrs) + ':' + str(mins) + ':' + str(secs))
                 f.write('\n# of searched artist: ' + str(len(artist_done)))
                 f.write('\n# of songs: ' + str(len(song_list)))
+                f.write('\n------')
             with open('songs.json', 'w') as f:
                 json.dump(song_list, f)
                        

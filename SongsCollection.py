@@ -7,7 +7,6 @@ from datetime import date
 import pandas as pd
 import json
 import time
-import sys
 import os
 
 """
@@ -55,29 +54,22 @@ class Log(Status):
         self.beg_t = time.time()
 
     def log_heading(self):
-        if not self.log_name:
-            return
-
-        self.mode = 'w+'
-        with open(self.log_name, mode=self.mode) as f:
-            f.write('=' * 20 + 'Date: ' + str(date.today()) + '=' * 20)
-            f.close()
+        if self.log_name:
+            self.mode = 'w+'
+            with open(self.log_name, mode=self.mode) as f:
+                f.write('=' * 20 + 'Date: ' + str(date.today()) + '=' * 20)
 
     def log_elapsed_time(self):
-        if not self.log_name:
-            return
+        if self.log_name:
+            h, m, s = calculate_elapsed_time(self.beg_t)
 
-        h, m, s = calculate_elapsed_time(self.beg_t)
-
-        with open(self.log_name, self.mode) as f:
-            f.write('\nElapsed time: ' + str(h) + ':' + str(m) + ':' + str(s))
+            with open(self.log_name, self.mode) as f:
+                f.write('\nElapsed time: ' + str(h) + ':' + str(m) + ':' + str(s))
 
     def log_ending(self):
-        if not self.log_name:
-            return
-
-        with open(self.log_name, self.mode) as f:
-            f.write('=' * 20 + 'END' + '=' * 20)
+        if self.log_name:
+            with open(self.log_name, self.mode) as f:
+                f.write('=' * 20 + 'END' + '=' * 20)
 
         self.elapsed_time()
 

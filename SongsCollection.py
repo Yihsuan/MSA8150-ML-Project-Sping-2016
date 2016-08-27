@@ -26,83 +26,129 @@ def calculate_elapsed_time(begin):
     return hour, minute, second
 
 
-class Log:
-    def __init__(self):
+class Status:
+    def __init__(self, collect_func):
+        self.data = {}
+        self.log_name = None
+        self.mode = 'a'
+        self.func = collect_func
+
+    def status_create_artist_list(self):
+        if self.data and self.log_name:
+            with open(self.log_name, self.mode) as f:
+                f.write('\nStatus:')
+                f.write('\n# of artist in the list: ' + str(len(self.data)))
+
+    def log_status(self):
+        if self.func == 'create_artist_list':
+            self.status_create_artist_list()
+
+
+class Log(Status):
+    def __init__(self, collect_func, log_name=None):
+        super(Log, self).__init__(collect_func)
+
         if not os.path.isdir('log'):
             os.mkdir('log')
+        self.log_name = log_name
+        self.mode = 'a'
+        self.beg_t = time.time()
 
-    def heading(self, log_name, mode='w+'):
-        with open(log_name, mode=mode) as f:
+    def log_heading(self):
+        if not self.log_name:
+            return
+
+        self.mode = 'w+'
+        with open(self.log_name, mode=self.mode) as f:
             f.write('=' * 20 + 'Date: ' + str(date.today()) + '=' * 20)
             f.close()
+
+    def log_elapsed_time(self):
+        if not self.log_name:
+            return
+
+        h, m, s = calculate_elapsed_time(self.beg_t)
+
+        with open(self.log_name, self.mode) as f:
+            f.write('\nElapsed time: ' + str(h) + ':' + str(m) + ':' + str(s))
+
+    def log_ending(self):
+        if not self.log_name:
+            return
+
+        with open(self.log_name, self.mode) as f:
+            f.write('=' * 20 + 'END' + '=' * 20)
+
+        self.elapsed_time()
 
 
 class SongsCollection(Log):
     def __init__(self):
-        super(SongsCollection, self).__init__()
-
+        self.data = None
         self.n = 10000
+        self.list_names = {'create_artist_list': 'artist_list.txt',
+                           'create_song_list': 'song_list.txt',
+                           'get_billboard_song_data': 'billboard_song_list.txt'}
+
         self.log_names = {'create_artist_list': 'create_artist_list.log',
                           'create_song_list': 'create_song_list.log',
                           'get_billboard_song_data': 'echonest_billboard_songs.log'}
 
-    def create_artist_list(self, n=None):
+    def create_artist_list(self, n=None, list_name=None, log_name=None):
         """
         n is desired number of artists in the list
         """
+
         if not n:
             n = self.n
+        if not list_name:
+            list_name = self.list_names['create_artist_list']
+        if not log_name:
+            log_name = self.log_names['create_artist_list']
 
         begin_t = time.time()
+
+        super(SongsCollection, self).__init__(log_name)
+        self.log_heading()
 
         artist_list = {}
         searched = {}
 
-        log_name = self.log_names[sys._getframe().f_code.co_name]
-        self.heading(log_name)
+        # get the 100 hottest artist
+        artist_list.update({i.name: 0 for i in artist_list.top_hottt(result=100)})
 
         while len(artist_list) <= n:
             try:
-                if len(artist_list) == 0:
-                    # get the 100 hottest artist
-                    for i in artist.top_hottt(results=100):
-                        artist_list[i.name] = 1
-
-                elif len(searched) == len(artist_list):
+                if len(searched) == len(artist_list):
                     with open(log_name, 'a') as f:
                         f.write('\nEnd of expanding the artist list')
                 else:
                     for i in [a for a in artist_list.keys() if a not in searched]:
-                        searched[i] = 1
                         a = artist.Artist(i)
                         for j in a.get_similar(results=100):
                             if j not in artist_list:
-                                artist_list[j.name] = 2
+                                artist_list[j.name] = 0
+                        searched[i] = 1
 
             except EchoNestAPIError:
+                self.log_elapsed_time()
 
-                hrs, mins, secs = calculate_elapsed_time(begin_t)
+                self.data = artist_list
 
-                with open('create_artist_list.log', 'a') as f:
-                    f.write('\nStatus:')
-                    f.write('\nElapsed time: ' + str(hrs) + ':' + str(mins) + ':' + str(secs))
-                    f.write('\n# of searched artists: ' + str(len(searched)))
-                    f.write('\n# of artist in the list: ' + str(len(artist_list)))
-                    f.write('\n------')
-                    f.close()
+                with open(list_name, mode='w') as f:
+                    f.write('\n'.join(self.data.keys()).encode('utf8'))
+
+                self.log_status()
 
                 time.sleep(60)
 
-        hrs, mins, secs = calculate_elapsed_time(begin_t)
+        self.data = artist_list
 
-        with open('create_artist_list.log', 'a') as f:
-            f.write('\nTotal elapsed time: ' + str(hrs) + ':' + str(mins) + ':' + str(secs))
-            f.write('\nFinal # of artists: ' + str(len(artist_list)))
+        with open(list_name, mode='w') as f:
+            f.write('\n'.join(self.data.keys()).encode('utf8'))
 
-        with open('artist_list.txt', mode='w') as f:
-            f.write('\n'.join(artist_list.keys()).encode('utf8'))
-
-
+        self.log_ending()
+        self.log_status()
 
     def create_song_list(self):
         begin_t = time.time()
